@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--font color-->
+  <!--一级标题-->
+  <color name="font_black">#333333</color>
+  <!--二级标题-->
+  <color name="font_black2">#4d4d4d</color>
+  <!--三级标题和主要文字-->
+  <color name="font_dimgray">#666666</color>
+  <!--次要文字-->
+  <color name="font_gray">#999999</color>
+  <color name="font_blue">#5680fb</color>
+  <color name="font_blue_light">#18b7f9</color>
+  <color name="blue_light">#18b7f9</color>
+
+  <!--点缀、辅助文字-->
+  <color name="font_light_grey">#cccccc</color>
+  <!--分类标题-->
+  <color name="font_turquoise">#1fbe9d</color>
+  <color name="font_red">#dc3d3d</color>
+  <color name="font_white">@color/white</color>
+  <!--toolbar编辑按钮-->
+  <color name="font_edit_green">#1c7c6f</color>
+
+</resources>
