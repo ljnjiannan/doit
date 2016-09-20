@@ -24,7 +24,7 @@ public abstract class BaseSimpleRecyclerAdapter<T>
    * 在delegate中使用
    */
   protected OnMultiItemClickListener mOnMultiItemClickListener = null;
-  protected OnItemClickListener mOnItemClickListener = null;
+  protected OnItemClickListener<T> mOnItemClickListener = null;
   protected OnItemLongClickListener mOnItemLongClickListener = null;
 
   public BaseSimpleRecyclerAdapter(Context context, List<T> data) {

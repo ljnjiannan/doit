@@ -5,4 +5,22 @@
   <color name="colorAccent">#FF4081</color>
   <color name="white">#FFFFFF</color>
   <color name="black">#000000</color>
+
+  <color name="colorAppPrimary">@color/colorApp500</color>
+  <color name="colorAppPrimaryDark">@color/colorApp800</color>
+  <color name="colorAppAccent">@color/colorApp200</color>
+
+  <color name="colorApp50">#eceff1</color>
+  <color name="colorApp100">#cfd8dc</color>
+  <color name="colorApp200">#b0bec5</color>
+  <color name="colorApp300">#90a4ae</color>
+  <color name="colorApp400">#78909c</color>
+  <color name="colorApp500">#607d8b</color>
+  <color name="colorApp600">#546e7a</color>
+  <color name="colorApp700">#455a64</color>
+  <color name="colorApp800">#37474f</color>
+  <color name="colorApp900">#263238</color>
+
+
+
 </resources>

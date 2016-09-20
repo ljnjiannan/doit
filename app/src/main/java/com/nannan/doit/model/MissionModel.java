@@ -3,7 +3,10 @@ package com.nannan.doit.model;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.annotation.Transient;
+import org.greenrobot.greendao.DaoException;
+import org.greenrobot.greendao.annotation.NotNull;
 
 /**
  * @author ljnjiannan
@@ -33,6 +36,20 @@ public class MissionModel {
   private long addTime;
 
   private long modifyTime;
+
+  @ToOne(joinProperty = "cateId")
+  private MissionCateModel cateModel;
+
+  @Generated(hash = 2032296467)
+  private transient Long cateModel__resolvedKey;
+
+  /** Used for active entity operations. */
+  @Generated(hash = 1661983549)
+  private transient MissionModelDao myDao;
+
+  /** Used to resolve relations */
+  @Generated(hash = 2040040024)
+  private transient DaoSession daoSession;
 
   public long getModifyTime() {
     return this.modifyTime;
@@ -116,6 +133,82 @@ public class MissionModel {
     }else {
       state=MISSION_STATE_DOING;
     }
+  }
+
+  /**
+   * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
+   * Entity must attached to an entity context.
+   */
+  @Generated(hash = 1942392019)
+  public void refresh() {
+    if (myDao == null) {
+      throw new DaoException("Entity is detached from DAO context");
+    }
+    myDao.refresh(this);
+  }
+
+  /**
+   * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
+   * Entity must attached to an entity context.
+   */
+  @Generated(hash = 713229351)
+  public void update() {
+    if (myDao == null) {
+      throw new DaoException("Entity is detached from DAO context");
+    }
+    myDao.update(this);
+  }
+
+  /**
+   * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
+   * Entity must attached to an entity context.
+   */
+  @Generated(hash = 128553479)
+  public void delete() {
+    if (myDao == null) {
+      throw new DaoException("Entity is detached from DAO context");
+    }
+    myDao.delete(this);
+  }
+
+  /** called by internal mechanisms, do not call yourself. */
+  @Generated(hash = 604948743)
+  public void setCateModel(@NotNull MissionCateModel cateModel) {
+    if (cateModel == null) {
+      throw new DaoException(
+          "To-one property 'cateId' has not-null constraint; cannot set to-one to null");
+    }
+    synchronized (this) {
+      this.cateModel = cateModel;
+      cateId = cateModel.getId();
+      cateModel__resolvedKey = cateId;
+    }
+  }
+
+  /** To-one relationship, resolved on first access. */
+  @Generated(hash = 148733651)
+  public MissionCateModel getCateModel() {
+    long __key = this.cateId;
+    if (cateModel__resolvedKey == null || !cateModel__resolvedKey.equals(__key)) {
+      final DaoSession daoSession = this.daoSession;
+      if (daoSession == null) {
+        throw new DaoException("Entity is detached from DAO context");
+      }
+      MissionCateModelDao targetDao = daoSession.getMissionCateModelDao();
+      MissionCateModel cateModelNew = targetDao.load(__key);
+      synchronized (this) {
+        cateModel = cateModelNew;
+        cateModel__resolvedKey = __key;
+      }
+    }
+    return cateModel;
+  }
+
+  /** called by internal mechanisms, do not call yourself. */
+  @Generated(hash = 458464021)
+  public void __setDaoSession(DaoSession daoSession) {
+    this.daoSession = daoSession;
+    myDao = daoSession != null ? daoSession.getMissionModelDao() : null;
   }
 
 }

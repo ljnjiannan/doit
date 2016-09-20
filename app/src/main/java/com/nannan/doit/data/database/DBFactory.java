@@ -4,12 +4,8 @@ import android.app.Activity;
 
 import com.nannan.doit.DIApplication;
 import com.nannan.doit.model.DaoSession;
-import com.nannan.doit.model.MissionModel;
+import com.nannan.doit.model.MissionCateModelDao;
 import com.nannan.doit.model.MissionModelDao;
-
-import org.greenrobot.greendao.query.QueryBuilder;
-import org.greenrobot.greendao.rx.RxDao;
-import org.greenrobot.greendao.rx.RxQuery;
 
 /**
  * @author ljnjiannan
@@ -20,9 +16,7 @@ public class DBFactory {
 
   private static final Object LOCK = new Object();
   private static MissionModelDao missionModelDao;
-  private static QueryBuilder<MissionModel> missionModelQuery;
-  private static RxQuery<MissionModel> missionModelRxQuery;
-  private static RxDao<MissionModel, Long> missionModelLongRxDao;
+  private static MissionCateModelDao missionCateModelDao;
 
   private static DaoSession getDaoSession(Activity activity) {
     synchronized (LOCK) {
@@ -35,17 +29,18 @@ public class DBFactory {
       if (missionModelDao == null) {
         missionModelDao = getDaoSession(activity).getMissionModelDao();
       }
-      return missionModelDao;
     }
+    return missionModelDao;
   }
 
-  public static QueryBuilder<MissionModel> getMissionModelQuery(Activity activity){
-    synchronized (LOCK){
-      if(missionModelQuery==null){
-        missionModelQuery=getMissionModelDao(activity).queryBuilder();
+
+  public static MissionCateModelDao getMissionCateModelDao(Activity activity) {
+    synchronized (LOCK) {
+      if (missionCateModelDao == null) {
+        missionCateModelDao = getDaoSession(activity).getMissionCateModelDao();
       }
+      return missionCateModelDao;
     }
-    return missionModelQuery;
   }
 
 }
