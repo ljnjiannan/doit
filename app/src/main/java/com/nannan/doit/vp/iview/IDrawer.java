@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Johan on 16/9/16.
  */
 
-public interface ISliderLayout extends IView {
+public interface IDrawer extends IView {
 
   void onDataLoad(List<MissionCateModel> list);
 }

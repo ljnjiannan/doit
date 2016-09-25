@@ -27,7 +27,7 @@ public abstract class BaseRefreshActivity<T> extends BaseActivity
   }
 
   @Override
-  protected int setCOntentViewId() {
+  protected int setContentViewId() {
     return R.layout.base_activity_refresh;
   }
 

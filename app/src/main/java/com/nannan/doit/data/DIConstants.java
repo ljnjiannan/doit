@@ -18,6 +18,7 @@ public class DIConstants {
     public static final String EXTRA_FROM_TAG = "extra_from_tag";
     public static final String EXTRA_VALUE_PUSH = "push";
     public static final String INTENT_KEY_DEFAULT="intent_key_default";
+    public static final String INTENT_KEY_MISSION_ID="intent_key_mission_id";
   }
 
 }

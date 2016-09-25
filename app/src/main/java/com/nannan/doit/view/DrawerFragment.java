@@ -5,12 +5,12 @@ import android.view.View;
 import com.nannan.doit.base.BasePullComplexRecyclerAdapter;
 import com.nannan.doit.base.BaseRefreshFragment;
 import com.nannan.doit.model.MissionCateModel;
-import com.nannan.doit.recycler.adapter.SliderLayoutRecyclerAdapter;
+import com.nannan.doit.recycler.adapter.DrawerRecyclerAdapter;
 import com.nannan.doit.rx.RxBus;
 import com.nannan.doit.rx.event.MissionCateSelectedEvent;
-import com.nannan.doit.vp.ipresenter.ISliderLayoutPresenter;
-import com.nannan.doit.vp.iview.ISliderLayout;
-import com.nannan.doit.vp.presenter.SliderLayoutPresenter;
+import com.nannan.doit.vp.ipresenter.IDrawerPresenter;
+import com.nannan.doit.vp.iview.IDrawer;
+import com.nannan.doit.vp.presenter.DrawerPresenter;
 
 import java.util.List;
 
@@ -19,16 +19,16 @@ import java.util.List;
  * @since 16/9/16.
  */
 
-public class SliderLayoutFragment extends BaseRefreshFragment<MissionCateModel>
-        implements ISliderLayout{
+public class DrawerFragment extends BaseRefreshFragment<MissionCateModel>
+        implements IDrawer {
 
-  private ISliderLayoutPresenter presenter;
+  private IDrawerPresenter presenter;
   private long cateId =0;
 
 
   @Override
   protected BasePullComplexRecyclerAdapter<MissionCateModel> getListAdapter() {
-    return new SliderLayoutRecyclerAdapter(mRecyclerView, getActivity());
+    return new DrawerRecyclerAdapter(mRecyclerView, getActivity());
   }
 
   @Override
@@ -43,7 +43,7 @@ public class SliderLayoutFragment extends BaseRefreshFragment<MissionCateModel>
   }
 
   protected void initData() {
-    presenter=new SliderLayoutPresenter(this);
+    presenter=new DrawerPresenter(this);
     presenter.loadData(getActivity());
   }
 

@@ -9,7 +9,7 @@ import android.util.Log;
 
 public class LogUtil {
 
-  private static final String LOG_PREFIX = "4399_";
+  private static final String LOG_PREFIX = "doit_";
   private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
   private static final int MAX_LOG_TAG_LENGTH = 23;
 

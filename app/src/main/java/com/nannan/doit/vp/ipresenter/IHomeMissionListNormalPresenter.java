@@ -2,6 +2,7 @@ package com.nannan.doit.vp.ipresenter;
 
 import android.app.Activity;
 
+import com.nannan.doit.model.MissionCateModel;
 import com.nannan.doit.model.MissionModel;
 
 /**
@@ -15,4 +16,8 @@ public interface IHomeMissionListNormalPresenter {
   void deleteMission(Activity activity,MissionModel model);
 
   void setMissionState(Activity activity,MissionModel model);
+
+  void getMissionMoveList(Activity activity,MissionModel model);
+
+  void moveMission(Activity activity,MissionModel model,MissionCateModel cateModel);
 }

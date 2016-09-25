@@ -14,10 +14,11 @@ import com.nannan.doit.view.MissionEditActivity;
 
 public class IntentUtil {
 
-  public static void openMissionEditActivity(Activity activity,long type){
+  public static void openMissionEditActivity(Activity activity,long type,long id){
     Intent intent=new Intent(activity, MissionEditActivity.class);
     Bundle bundle=new Bundle();
     bundle.putLong(DIConstants.IntentKey.INTENT_KEY_DEFAULT,type);
+    bundle.putLong(DIConstants.IntentKey.INTENT_KEY_MISSION_ID,id);
     intent.putExtras(bundle);
     activity.startActivity(intent);
   }

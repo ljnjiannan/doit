@@ -21,6 +21,13 @@
   <color name="colorApp800">#37474f</color>
   <color name="colorApp900">#263238</color>
 
+  <color name="orange_color">#fca143</color>
+  
+  <color name="light_blue_500">#03a9f4</color>
+  
+  <color name="amber_500">#ffc107</color>
+
+
 
 
 </resources>

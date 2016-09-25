@@ -3,8 +3,8 @@ package com.nannan.doit.vp.presenter;
 import android.app.Activity;
 
 import com.nannan.doit.data.database.DBFactory;
-import com.nannan.doit.vp.ipresenter.ISliderLayoutPresenter;
-import com.nannan.doit.vp.iview.ISliderLayout;
+import com.nannan.doit.vp.ipresenter.IDrawerPresenter;
+import com.nannan.doit.vp.iview.IDrawer;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -13,11 +13,11 @@ import rx.schedulers.Schedulers;
  * Created by Johan on 16/9/16.
  */
 
-public class SliderLayoutPresenter implements ISliderLayoutPresenter {
+public class DrawerPresenter implements IDrawerPresenter {
 
-  private ISliderLayout view;
+  private IDrawer view;
 
-  public SliderLayoutPresenter(ISliderLayout view) {
+  public DrawerPresenter(IDrawer view) {
     this.view = view;
   }
 

@@ -42,7 +42,7 @@ public abstract class BaseRefreshFragment<T> extends BaseFragment
   }
 
   @Override
-  protected int setCOntentViewId() {
+  protected int setLayoutViewId() {
     return R.layout.base_fragment_refresh;
   }
 

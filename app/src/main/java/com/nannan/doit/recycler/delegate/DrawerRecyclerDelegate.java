@@ -14,15 +14,15 @@ import com.nannan.doit.utils.ResUtil;
  * Created by Johan on 16/9/16.
  */
 
-public class SliderLayoutRecyclerDelegate extends BaseItemDelegate<MissionCateModel> {
+public class DrawerRecyclerDelegate extends BaseItemDelegate<MissionCateModel> {
 
-  public SliderLayoutRecyclerDelegate(Context context) {
+  public DrawerRecyclerDelegate(Context context) {
     super(context, 0);
   }
 
   @Override
   public int getItemViewLayout() {
-    return R.layout.item_sliderlayout_list;
+    return R.layout.item_drawer_list;
   }
 
   @Override

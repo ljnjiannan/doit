@@ -10,8 +10,9 @@
     android:id="@+id/et_mission_title"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:hint="请输入任务名称"
+    android:hint="@string/enter_mission_title"
     android:textColorHint="@color/font_gray"
+    android:paddingLeft="16dp"
     />
 
 </LinearLayout>

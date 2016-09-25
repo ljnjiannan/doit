@@ -6,7 +6,7 @@ import android.app.Activity;
  * Created by Johan on 16/9/16.
  */
 
-public interface ISliderLayoutPresenter {
+public interface IDrawerPresenter {
 
   void loadData(Activity activitys);
 

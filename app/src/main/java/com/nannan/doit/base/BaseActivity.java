@@ -3,7 +3,6 @@ package com.nannan.doit.base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.nannan.doit.R;
 import com.nannan.doit.rx.RxUtils;
@@ -22,7 +21,7 @@ public abstract class BaseActivity extends AppCompatActivity{
 
   protected String TAG="BaseActivityLog";
 
-  private Toolbar mToolbar;
+  protected Toolbar mToolbar;
   protected CompositeSubscription rxSubscription = new CompositeSubscription();
   protected String mFromTag = null;
 
@@ -34,8 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity{
     getExtra(bundle);
 
 
-    if(setCOntentViewId()!=0) {
-      setContentView(setCOntentViewId());
+    if(setContentViewId()!=0) {
+      setContentView(setContentViewId());
     }
     //是否开启rxbus订阅支持
     if (isBindRxBus()) {
@@ -54,14 +53,8 @@ public abstract class BaseActivity extends AppCompatActivity{
       setSupportActionBar(mToolbar);
       initToolBar();
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
 
-      mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-          finish();
-        }
-      });
+      mToolbar.setNavigationOnClickListener(view -> finish());
     }
     initRxEvent();
     initView();
@@ -89,6 +82,12 @@ public abstract class BaseActivity extends AppCompatActivity{
     }
   }
 
+  protected void setViewTitle(String title){
+    if(!title.isEmpty()){
+      getSupportActionBar().setTitle(title);
+    }
+  }
+
 
   @Override
   protected void onDestroy() {
@@ -100,7 +99,7 @@ public abstract class BaseActivity extends AppCompatActivity{
 
   protected abstract String setActivityTitle();
 
-  protected abstract int setCOntentViewId();
+  protected abstract int setContentViewId();
 
   protected abstract void initView();
 

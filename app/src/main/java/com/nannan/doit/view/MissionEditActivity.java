@@ -8,28 +8,30 @@ import android.widget.EditText;
 import com.nannan.doit.R;
 import com.nannan.doit.base.BaseActivity;
 import com.nannan.doit.data.DIConstants;
-import com.nannan.doit.data.database.DBFactory;
 import com.nannan.doit.model.MissionModel;
-import com.nannan.doit.utils.DateUtil;
+import com.nannan.doit.vp.ipresenter.IMissionEditPresenter;
+import com.nannan.doit.vp.iview.IMissionEditView;
+import com.nannan.doit.vp.presenter.MissionEditPresenter;
 
 import butterknife.Bind;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * @author ljnjiannan
  * @since 16/9/12.
  */
 
-public class MissionEditActivity extends BaseActivity {
+public class MissionEditActivity extends BaseActivity implements IMissionEditView{
 
   @Bind(R.id.et_mission_title) EditText etMissionTitle;
 
   private long type;
+  private long missionId;
+  private IMissionEditPresenter presenter;
 
   @Override
   protected void getExtra(Bundle extra) {
     type=extra.getLong(DIConstants.IntentKey.INTENT_KEY_DEFAULT,0);
+    missionId=extra.getLong(DIConstants.IntentKey.INTENT_KEY_MISSION_ID,-1);
   }
 
   @Override
@@ -39,11 +41,11 @@ public class MissionEditActivity extends BaseActivity {
 
   @Override
   protected String setActivityTitle() {
-    return null;
+    return missionId==-1?"添加任务":"更改任务";
   }
 
   @Override
-  protected int setCOntentViewId() {
+  protected int setContentViewId() {
     return R.layout.activity_mission_edit;
   }
 
@@ -54,7 +56,10 @@ public class MissionEditActivity extends BaseActivity {
 
   @Override
   protected void initData() {
-
+    presenter=new MissionEditPresenter(this);
+    if(missionId!=-1) {
+      presenter.loadData(this, missionId);
+    }
   }
 
   @Override
@@ -72,21 +77,18 @@ public class MissionEditActivity extends BaseActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     String missionName=etMissionTitle.getText().toString();
     if (!missionName.isEmpty()) {
-      MissionModel model = new MissionModel();
-      model.setTitle(missionName);
-      model.setCateId(type);
-      model.setAddTime(DateUtil.getCurrentTime());
-      DBFactory.getMissionModelDao(this).rx()
-          .insert(model)
-          .subscribeOn(Schedulers.io())
-          .observeOn(AndroidSchedulers.mainThread())
-          .subscribe(missionModel -> {
-            this.finish();
-          }, throwable -> {
-          });
-
+      presenter.saveData(this,missionName,type);
     }
     return super.onOptionsItemSelected(item);
   }
 
+  @Override
+  public void onLoadDataSuccess(MissionModel model) {
+    etMissionTitle.setText(model.getTitle());
+  }
+
+  @Override
+  public void onSaveSuccess() {
+    finish();
+  }
 }
